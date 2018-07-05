@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ToDoTableViewController: UITableViewController {
+class ToDoTableViewController: UITableViewController, TodoCellDelegate {
+
 
     var todoItems : [TodoItem]!
     
@@ -25,6 +26,58 @@ class ToDoTableViewController: UITableViewController {
         })
         tableView.reloadData()
     }
+    
+    @IBAction func addNewTodo(_ sender: Any) {
+        
+        let addAlert = UIAlertController(title: "New Todo", message: "Enter a Title", preferredStyle: .alert)
+        
+        addAlert.addTextField { (textfield : UITextField) in
+            textfield.placeholder = "ToDo Item Title"
+        }
+        
+        addAlert.addAction(UIAlertAction(title: "Create", style: .default, handler: { (UIAlertAction) in
+            
+            guard let title = addAlert.textFields?.first?.text else { return }
+            let newTodo = TodoItem(title: title, completed: false, createdAt: Date(), targetTime: Date(), itemIdentifier: UUID())
+            
+            newTodo.saveItem()
+            self.todoItems.append(newTodo)
+            
+            let indexPath = IndexPath(row: self.tableView.numberOfRows(inSection: 0), section: 0)
+            
+            self.tableView.insertRows(at: [indexPath], with: .automatic)
+            
+        }))
+        
+        addAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(addAlert, animated: true, completion: nil)
+        
+    }
+    
+    func didRequestDelete(_ cell: ToDoTableViewCell) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            todoItems[indexPath.row].deleteItem()
+            todoItems.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    func didRequestComplete(_ cell: ToDoTableViewCell) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            var todoItem = todoItems[indexPath.row]
+            todoItem.markAsCompleted()
+            cell.todoLabel.attributedText = strikeThroughText(todoItem.title)
+        }
+    }
+    
+    func strikeThroughText (_ text : String) -> NSAttributedString {
+        let attributeString: NSMutableAttributedString = NSMutableAttributedString(string: text)
+        attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))
+        
+        return attributeString
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -46,9 +99,15 @@ class ToDoTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ToDoTableViewCell
         
+        cell.delegate = self
+        
         let todoItem = todoItems[indexPath.row]
         
         cell.todoLabel.text = todoItem.title
+        
+        if todoItem.completed {
+            cell.todoLabel.attributedText = strikeThroughText(todoItem.title)
+        }
 
         return cell
     }
