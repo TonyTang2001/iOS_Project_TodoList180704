@@ -38,6 +38,7 @@ class ToDoTableViewController: UITableViewController, TodoCellDelegate {
         addAlert.addAction(UIAlertAction(title: "Create", style: .default, handler: { (UIAlertAction) in
             
             guard let title = addAlert.textFields?.first?.text else { return }
+            
             let newTodo = TodoItem(title: title, completed: false, createdAt: Date(), targetTime: Date(), itemIdentifier: UUID())
             
             newTodo.saveItem()
@@ -104,6 +105,12 @@ class ToDoTableViewController: UITableViewController, TodoCellDelegate {
         let todoItem = todoItems[indexPath.row]
         
         cell.todoLabel.text = todoItem.title
+        
+        //Transform Date! to String named timeString
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
+        let timeString = dateFormatter.string(from: todoItem.targetTime)
+        cell.targetTimeLabel.text = timeString
         
         if todoItem.completed {
             cell.todoLabel.attributedText = strikeThroughText(todoItem.title)

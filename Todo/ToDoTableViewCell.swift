@@ -17,6 +17,8 @@ class ToDoTableViewCell: UITableViewCell {
 
     @IBOutlet weak var todoLabel: UILabel!
     
+    @IBOutlet weak var targetTimeLabel: UILabel!
+    
     var delegate : TodoCellDelegate?
     
     override func awakeFromNib() {
