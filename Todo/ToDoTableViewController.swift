@@ -15,9 +15,15 @@ class ToDoTableViewController: UITableViewController, TodoCellDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // SetUp Status Bar in UITableViewController
+        self.navigationController?.navigationBar.barStyle = .black
         loadData()
     }
+    
+//    override var preferredStatusBarStyle : UIStatusBarStyle {
+//        return .default
+//    }
 
     func loadData() {
         todoItems = [TodoItem]()
@@ -118,7 +124,6 @@ class ToDoTableViewController: UITableViewController, TodoCellDelegate {
 
         return cell
     }
- 
 
     /*
     // Override to support conditional editing of the table view.
