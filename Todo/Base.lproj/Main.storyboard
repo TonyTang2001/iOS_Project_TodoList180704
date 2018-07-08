@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -69,6 +70,11 @@
                                                 <action selector="deleteTodo:" destination="tdt-Pg-ERK" eventType="touchUpInside" id="9F9-9l-yZh"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLX-ak-x4P">
+                                            <rect key="frame" x="195" y="0.0" width="40" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Share"/>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -117,45 +123,71 @@
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="245" text="Say Sth." translatesAutoresizingMaskIntoConstraints="NO" id="1zN-6H-7HX">
                                         <rect key="frame" x="0.0" y="25" width="343" height="242"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.57229863790000002" green="0.73088995290000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="28"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
                             </stackView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QpH-X5-Kmp">
-                                <rect key="frame" x="112" y="363" width="121" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="1"/>
-                                    <segment title="2"/>
-                                    <segment title="3"/>
-                                </segments>
-                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hgd-eu-UwX">
-                                <rect key="frame" x="179" y="435" width="54" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Bmz-tF-cH2">
+                                <rect key="frame" x="16" y="595" width="343" height="72"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QpH-X5-Kmp">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="29"/>
+                                        <segments>
+                                            <segment title="1"/>
+                                            <segment title="2"/>
+                                            <segment title="3"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </segmentedControl>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jdu-Oa-CvY">
+                                        <rect key="frame" x="0.0" y="36" width="343" height="36"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hgd-eu-UwX">
+                                                <rect key="frame" x="0.0" y="0.0" width="70" height="36"/>
+                                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="eBu-AW-D8u"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="Ohb-W0-qrX" kind="show" id="rcj-Dp-gpA"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="245" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6KT-n1-Pch">
+                                                <rect key="frame" x="78" y="0.0" width="265" height="36"/>
+                                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                                <state key="normal" title="Done">
+                                                    <color key="titleColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="0.82507491438356162" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="goI-bK-JK5" firstAttribute="trailing" secondItem="Bmz-tF-cH2" secondAttribute="trailing" constant="16" id="0Rh-qH-TZF"/>
                             <constraint firstItem="irF-Wy-Jy9" firstAttribute="height" secondItem="FeO-BO-Gzj" secondAttribute="height" multiplier="0.4" id="8jT-cR-Zen"/>
                             <constraint firstItem="irF-Wy-Jy9" firstAttribute="leading" secondItem="goI-bK-JK5" secondAttribute="leading" constant="16" id="B5p-w9-tvU"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Bmz-tF-cH2" secondAttribute="bottom" id="Rk6-O7-VoA"/>
                             <constraint firstItem="irF-Wy-Jy9" firstAttribute="top" secondItem="goI-bK-JK5" secondAttribute="top" id="fTi-7B-HYz"/>
                             <constraint firstItem="goI-bK-JK5" firstAttribute="trailing" secondItem="irF-Wy-Jy9" secondAttribute="trailing" constant="16" id="gda-yH-RNp"/>
+                            <constraint firstItem="Bmz-tF-cH2" firstAttribute="leading" secondItem="goI-bK-JK5" secondAttribute="leading" constant="16" id="soJ-Ej-Y5h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="goI-bK-JK5"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bNx-M9-Ja1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1717.5999999999999" y="-9.4452773613193415"/>
+            <point key="canvasLocation" x="1520.8" y="74.212893553223395"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KUv-r8-lSH">
@@ -180,7 +212,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e77-hT-OXw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-23.199999999999999" y="86.806596701649184"/>
+            <point key="canvasLocation" x="148" y="75"/>
         </scene>
     </scenes>
 </document>
