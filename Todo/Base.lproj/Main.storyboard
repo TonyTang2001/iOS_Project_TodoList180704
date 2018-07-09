@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -71,9 +72,12 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLX-ak-x4P">
-                                            <rect key="frame" x="195" y="0.0" width="40" height="30"/>
+                                            <rect key="frame" x="224" y="-1" width="40" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Share"/>
+                                            <connections>
+                                                <action selector="shareTodo:" destination="tdt-Pg-ERK" eventType="touchUpInside" id="QeT-0f-2vw"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -89,12 +93,20 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="To Do" id="UmZ-J6-Vju">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="YKh-Hh-AuU">
-                            <color key="tintColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="addNewTodo:" destination="stP-nh-oLI" id="iBf-w7-6ij"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="YKh-Hh-AuU">
+                                <color key="tintColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="addNewTodo:" destination="stP-nh-oLI" id="iBf-w7-6ij"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="action" id="dpc-su-0Dg">
+                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="showConnectivityAction:" destination="stP-nh-oLI" id="Uzp-F7-Rqy"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Al-MO-Dkm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -121,7 +133,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="245" text="Say Sth." translatesAutoresizingMaskIntoConstraints="NO" id="1zN-6H-7HX">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="245" text="Say Sth. " translatesAutoresizingMaskIntoConstraints="NO" id="1zN-6H-7HX">
                                         <rect key="frame" x="0.0" y="25" width="343" height="242"/>
                                         <color key="backgroundColor" red="0.57229863790000002" green="0.73088995290000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>

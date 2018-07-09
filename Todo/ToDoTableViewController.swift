@@ -9,8 +9,7 @@
 import UIKit
 
 class ToDoTableViewController: UITableViewController, TodoCellDelegate {
-
-
+    
     var todoItems : [TodoItem]!
     
     override func viewDidLoad() {
@@ -18,12 +17,10 @@ class ToDoTableViewController: UITableViewController, TodoCellDelegate {
         
         // SetUp Status Bar in UITableViewController
         self.navigationController?.navigationBar.barStyle = .black
+        
         loadData()
+        
     }
-    
-//    override var preferredStatusBarStyle : UIStatusBarStyle {
-//        return .default
-//    }
 
     func loadData() {
         todoItems = [TodoItem]()
@@ -62,6 +59,10 @@ class ToDoTableViewController: UITableViewController, TodoCellDelegate {
         
     }
     
+    @IBAction func showConnectivityAction(_ sender: Any) {
+        
+    }
+    
     func didRequestDelete(_ cell: ToDoTableViewCell) {
         if let indexPath = tableView.indexPath(for: cell) {
             todoItems[indexPath.row].deleteItem()
@@ -76,6 +77,10 @@ class ToDoTableViewController: UITableViewController, TodoCellDelegate {
             todoItem.markAsCompleted()
             cell.todoLabel.attributedText = strikeThroughText(todoItem.title)
         }
+    }
+    
+    func didRequestShare(_ cell: ToDoTableViewCell) {
+        
     }
     
     func strikeThroughText (_ text : String) -> NSAttributedString {
