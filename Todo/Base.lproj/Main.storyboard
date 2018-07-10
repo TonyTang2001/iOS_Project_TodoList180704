@@ -104,7 +104,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="IhN-On-0FE" firstAttribute="top" secondItem="Oia-f8-PKK" secondAttribute="top" constant="20" id="4jc-co-x1y"/>
+                            <constraint firstAttribute="top" secondItem="Oia-f8-PKK" secondAttribute="top" id="4jc-co-x1y"/>
                             <constraint firstItem="IhN-On-0FE" firstAttribute="trailing" secondItem="JJm-KM-Xkh" secondAttribute="trailing" constant="5" id="9kW-5g-d0A"/>
                             <constraint firstItem="Oia-f8-PKK" firstAttribute="leading" secondItem="IhN-On-0FE" secondAttribute="leading" id="Ffe-HL-CN0"/>
                             <constraint firstItem="IhN-On-0FE" firstAttribute="bottom" secondItem="JJm-KM-Xkh" secondAttribute="bottom" constant="5" id="N9p-ca-YWw"/>
@@ -120,7 +120,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PbH-IE-WSV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-876" y="67"/>
+            <point key="canvasLocation" x="-598" y="52"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="0B5-Yq-BeW">

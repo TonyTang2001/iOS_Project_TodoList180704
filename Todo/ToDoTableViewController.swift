@@ -10,9 +10,21 @@ import UIKit
 
 class ToDoTableViewController: UITableViewController {
     
-    var todoItems : [TodoItem]!
+    var todoItems : [TodoItem]! {
+        didSet{
+            progressBar.setProgress(progress, animated: true)
+        }
+    }
     
     @IBOutlet weak var progressBar: UIProgressView!
+    
+    var progress : Float {
+        if todoItems.count > 0 {
+            return Float(todoItems.filter({$0.completed}).count) / Float(todoItems.count)
+        } else {
+            return 0
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +42,7 @@ class ToDoTableViewController: UITableViewController {
             $0.targetTime < $1.targetTime
         })
         tableView.reloadData()
+        progressBar.setProgress(progress, animated: true)
     }
     
     func addNewTodo() {
