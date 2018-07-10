@@ -62,6 +62,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="MY LIST" id="UmZ-J6-Vju"/>
+                    <connections>
+                        <outlet property="progressBar" destination="hbS-Pu-oJ1" id="YYr-IP-jhV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Al-MO-Dkm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

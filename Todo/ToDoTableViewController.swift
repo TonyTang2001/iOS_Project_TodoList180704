@@ -12,6 +12,8 @@ class ToDoTableViewController: UITableViewController {
     
     var todoItems : [TodoItem]!
     
+    @IBOutlet weak var progressBar: UIProgressView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,20 +65,22 @@ class ToDoTableViewController: UITableViewController {
         
     }
     
-    func didRequestDelete(_ cell: ToDoTableViewCell) {
-        if let indexPath = tableView.indexPath(for: cell) {
-            todoItems[indexPath.row].deleteItem()
-            todoItems.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
-    }
-    
-    func didRequestComplete(_ cell: ToDoTableViewCell) {
-        if let indexPath = tableView.indexPath(for: cell) {
-            var todoItem = todoItems[indexPath.row]
-            todoItem.markAsCompleted()
+    func completeTodoItem(_ indexPath: IndexPath) {
+        var todoItem = todoItems[indexPath.row]
+        todoItem.markAsCompleted()
+        todoItems[indexPath.row] = todoItem
+        
+        if let cell = tableView.cellForRow(at: indexPath) as? ToDoTableViewCell {
             cell.todoLabel.attributedText = strikeThroughText(todoItem.title)
+            UIView.animate(withDuration: 0.1, animations: {
+                cell.transform = cell.transform.scaledBy(x: 1.5, y: 1.5)
+            }) { (success) in
+                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+                    cell.transform = CGAffineTransform.identity
+                }, completion: nil)
+            }
         }
+        
     }
     
     func didRequestShare(_ cell: ToDoTableViewCell) {
@@ -139,6 +143,10 @@ class ToDoTableViewController: UITableViewController {
         deleteAction.backgroundColor = UIColor(named: "mainDefaultRed")
         
         return [deleteAction]
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        completeTodoItem(indexPath)
     }
 
     /*
