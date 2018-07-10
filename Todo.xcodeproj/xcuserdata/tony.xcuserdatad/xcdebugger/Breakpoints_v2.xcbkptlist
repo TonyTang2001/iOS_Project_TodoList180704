@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Todo/ToDoTableViewCell.swift"
+            timestampString = "552909506.767301"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "setSelected(_:animated:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Todo.ToDoTableViewCell.delegate.getter : Swift.Optional&lt;Todo.TodoCellDelegate&gt;"
+                  moduleName = "Todo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tony/Desktop/iOS/Projects/Todo/Todo/ToDoTableViewCell.swift"
+                  timestampString = "552908514.591958"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "95">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Todo.ToDoTableViewCell.delegate.setter : Swift.Optional&lt;Todo.TodoCellDelegate&gt;"
+                  moduleName = "Todo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tony/Desktop/iOS/Projects/Todo/Todo/ToDoTableViewCell.swift"
+                  timestampString = "552908514.595762"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "135">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Todo.ToDoTableViewCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; Todo.ToDoTableViewCell"
+                  moduleName = "Todo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tony/Desktop/iOS/Projects/Todo/Todo/ToDoTableViewCell.swift"
+                  timestampString = "552908514.598012"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "332">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Todo.ToDoTableViewCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Todo.ToDoTableViewCell&gt;"
+                  moduleName = "Todo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tony/Desktop/iOS/Projects/Todo/Todo/ToDoTableViewCell.swift"
+                  timestampString = "552908514.600082"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "23"
+                  endingLineNumber = "23"
+                  offsetFromSymbolStart = "303">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

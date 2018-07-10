@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ToDoTableViewController: UITableViewController, TodoCellDelegate {
+class ToDoTableViewController: UITableViewController {
     
     var todoItems : [TodoItem]!
     
@@ -30,7 +30,7 @@ class ToDoTableViewController: UITableViewController, TodoCellDelegate {
         tableView.reloadData()
     }
     
-    @IBAction func addNewTodo(_ sender: Any) {
+    func addNewTodo() {
         
         let addAlert = UIAlertController(title: "New Todo", message: "Enter a Title", preferredStyle: .alert)
         
@@ -59,7 +59,7 @@ class ToDoTableViewController: UITableViewController, TodoCellDelegate {
         
     }
     
-    @IBAction func showConnectivityAction(_ sender: Any) {
+    func showConnectivityAction() {
         
     }
     
@@ -111,15 +111,13 @@ class ToDoTableViewController: UITableViewController, TodoCellDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ToDoTableViewCell
         
-        cell.delegate = self
-        
         let todoItem = todoItems[indexPath.row]
         
         cell.todoLabel.text = todoItem.title
         
         //Transform Date! to String named timeString
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm"
+        dateFormatter.dateFormat = "HH:mm"
         let timeString = dateFormatter.string(from: todoItem.targetTime)
         cell.targetTimeLabel.text = timeString
         
@@ -128,6 +126,19 @@ class ToDoTableViewController: UITableViewController, TodoCellDelegate {
         }
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let deleteAction = UITableViewRowAction(style: .normal, title: "Delete") { (action: UITableViewRowAction, indexPath: IndexPath) in
+            self.todoItems[indexPath.row].deleteItem()
+            self.todoItems.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        
+        deleteAction.backgroundColor = UIColor(named: "mainDefaultRed")
+        
+        return [deleteAction]
     }
 
     /*

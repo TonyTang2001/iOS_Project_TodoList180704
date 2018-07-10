@@ -13,6 +13,7 @@
 		EAC1C57E20ECD3DA00D2B346 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAC1C57C20ECD3DA00D2B346 /* LaunchScreen.storyboard */; };
 		EAC1C58620ECD52800D2B346 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC1C58520ECD52800D2B346 /* ToDoItem.swift */; };
 		EAC1C58820ECD78000D2B346 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC1C58720ECD78000D2B346 /* DataManager.swift */; };
+		EAEE6EA920F4B03D00C6B3D5 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEE6EA820F4B03D00C6B3D5 /* ContainerViewController.swift */; };
 		EAFDEDF120ECFA9400F77FCB /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFDEDF020ECFA9400F77FCB /* ToDoTableViewCell.swift */; };
 		EAFDEDF320ECFAAA00F77FCB /* ToDoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFDEDF220ECFAAA00F77FCB /* ToDoTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +27,7 @@
 		EAC1C57F20ECD3DA00D2B346 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAC1C58520ECD52800D2B346 /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		EAC1C58720ECD78000D2B346 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		EAEE6EA820F4B03D00C6B3D5 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		EAFDEDF020ECFA9400F77FCB /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
 		EAFDEDF220ECFAAA00F77FCB /* ToDoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,6 +65,7 @@
 				EAC1C57320ECD3D800D2B346 /* AppDelegate.swift */,
 				EAC1C58520ECD52800D2B346 /* ToDoItem.swift */,
 				EAC1C58720ECD78000D2B346 /* DataManager.swift */,
+				EAEE6EA820F4B03D00C6B3D5 /* ContainerViewController.swift */,
 				EAFDEDF220ECFAAA00F77FCB /* ToDoTableViewController.swift */,
 				EAFDEDF020ECFA9400F77FCB /* ToDoTableViewCell.swift */,
 				EAC1C57720ECD3D800D2B346 /* Main.storyboard */,
@@ -148,6 +151,7 @@
 				EAC1C57420ECD3D800D2B346 /* AppDelegate.swift in Sources */,
 				EAC1C58620ECD52800D2B346 /* ToDoItem.swift in Sources */,
 				EAFDEDF120ECFA9400F77FCB /* ToDoTableViewCell.swift in Sources */,
+				EAEE6EA920F4B03D00C6B3D5 /* ContainerViewController.swift in Sources */,
 				EAFDEDF320ECFAAA00F77FCB /* ToDoTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,6 +296,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5V65NNG452;
 				INFOPLIST_FILE = Todo/Info.plist;
@@ -310,6 +315,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libc++";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5V65NNG452;
 				INFOPLIST_FILE = Todo/Info.plist;
