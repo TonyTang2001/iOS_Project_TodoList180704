@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class ToDoTableViewController: UITableViewController {
     
@@ -29,8 +30,15 @@ class ToDoTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) { (success, error) in
+            if success {
+                print("NotiRequSuccess")
+            } else {
+                print("NotiRequeError")
+            }
+        }
         // SetUp Status Bar in UITableViewController
-        self.navigationController?.navigationBar.barStyle = .black
+//        self.navigationController?.navigationBar.barStyle = .black
         
         loadData()
         
@@ -82,7 +90,7 @@ class ToDoTableViewController: UITableViewController {
         var todoItem = todoItems[indexPath.row]
         todoItem.markAsCompleted()
         todoItems[indexPath.row] = todoItem
-        
+
         if let cell = tableView.cellForRow(at: indexPath) as? ToDoTableViewCell {
             cell.todoLabel.attributedText = strikeThroughText(todoItem.title)
             UIView.animate(withDuration: 0.1, animations: {
@@ -93,7 +101,7 @@ class ToDoTableViewController: UITableViewController {
                 }, completion: nil)
             }
         }
-        
+
     }
     
     func didRequestShare(_ cell: ToDoTableViewCell) {
@@ -123,7 +131,6 @@ class ToDoTableViewController: UITableViewController {
         
         return todoItems.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ToDoTableViewCell
@@ -145,7 +152,23 @@ class ToDoTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let completeTask = UIContextualAction(style: .normal, title: "✔︎") { (action, view, nil) in
+            self.completeTodoItem(indexPath)
+        }
+        completeTask.backgroundColor = UIColor(named: "mainDefaultGreen")
+        return UISwipeActionsConfiguration(actions: [completeTask])
+    }
+    
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        let fixNotif = UITableViewRowAction(style: .normal, title: "Fix") { (action: UITableViewRowAction, indexPath: IndexPath) in
+            let dotoItem = self.todoItems[indexPath.row]
+            //FIXME: - FixNoti Incompleted
+            
+        }
+        fixNotif.backgroundColor = UIColor.blue
         
         let deleteAction = UITableViewRowAction(style: .normal, title: "Delete") { (action: UITableViewRowAction, indexPath: IndexPath) in
             self.todoItems[indexPath.row].deleteItem()
@@ -155,12 +178,14 @@ class ToDoTableViewController: UITableViewController {
         
         deleteAction.backgroundColor = UIColor(named: "mainDefaultRed")
         
-        return [deleteAction]
+        return [deleteAction, fixNotif]
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        completeTodoItem(indexPath)
-    }
+    
+//    //tap To Complete
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        completeTodoItem(indexPath)
+//    }
 
     /*
     // Override to support conditional editing of the table view.
