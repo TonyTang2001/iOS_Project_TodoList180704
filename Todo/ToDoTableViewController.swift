@@ -154,11 +154,20 @@ class ToDoTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let completeTask = UIContextualAction(style: .normal, title: "✔︎") { (action, view, nil) in
+        //FIXME: - Prevent Complete Option to show up on Completed Event
+        
+        let completeTask = UIContextualAction(style: .normal, title: "✓ Complete") { (action, view, nil) in
             self.completeTodoItem(indexPath)
         }
         completeTask.backgroundColor = UIColor(named: "mainDefaultGreen")
-        return UISwipeActionsConfiguration(actions: [completeTask])
+//        completeTask.image = UIImage( ✓ )
+        
+        //prevent Full Swipe
+        let config = UISwipeActionsConfiguration(actions: [completeTask])
+        config.performsFirstActionWithFullSwipe = false
+        return config
+        
+//        return UISwipeActionsConfiguration(actions: [completeTask])
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
