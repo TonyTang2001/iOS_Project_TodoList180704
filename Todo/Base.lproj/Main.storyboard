@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nt9-09-no3">
-    <device id="ipad9_7" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,11 +17,11 @@
             <objects>
                 <tableViewController id="stP-nh-oLI" customClass="ToDoTableViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4oU-uU-Shz">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="974"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <progressView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="hbS-Pu-oJ1">
-                            <rect key="frame" x="0.0" y="0.0" width="768" height="2"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="2"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="tintColor" name="mainDefaultGreen"/>
                             <color key="progressTintColor" name="mainDefaultGreen"/>
@@ -30,10 +29,10 @@
                         </progressView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="50" id="tdt-Pg-ERK" customClass="ToDoTableViewCell" customModule="Todo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="30" width="768" height="50"/>
+                                <rect key="frame" x="0.0" y="30" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tdt-Pg-ERK" id="3qU-Mt-90X" customClass="ToDoTableViewCell" customModule="Todo" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="768" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TargetTime" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nay-P3-LSz">
@@ -44,7 +43,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ToDo Item " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aH1-xN-OjB">
-                                            <rect key="frame" x="120" y="9" width="593" height="32"/>
+                                            <rect key="frame" x="120" y="9" width="200" height="32"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                             <nil key="textColor"/>
@@ -81,11 +80,11 @@
             <objects>
                 <viewController id="Nt9-09-no3" customClass="ContainerViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Frf-C6-B3K">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJm-KM-Xkh">
-                                <rect key="frame" x="723" y="979" width="40" height="40"/>
+                                <rect key="frame" x="330" y="622" width="40" height="40"/>
                                 <color key="backgroundColor" name="mainDefaultOceanBlue"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Qnh-m9-5Gg"/>
@@ -102,11 +101,23 @@
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oia-f8-PKK">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="974"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                 <connections>
                                     <segue destination="Ohb-W0-qrX" kind="embed" identifier="TodoVC" id="jDF-F0-bZc"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2W-RQ-M95">
+                                <rect key="frame" x="280" y="622" width="42" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                <state key="normal" title="+">
+                                    <color key="titleShadowColor" name="mainDarkGray"/>
+                                </state>
+                                <connections>
+                                    <segue destination="kHx-eW-zK1" kind="show" id="TCr-QY-5xP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -126,42 +137,31 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PbH-IE-WSV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-598" y="52"/>
+            <point key="canvasLocation" x="-599.20000000000005" y="51.724137931034484"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Todo View Controller-->
         <scene sceneID="0B5-Yq-BeW">
             <objects>
-                <viewController id="kHx-eW-zK1" sceneMemberID="viewController">
+                <viewController id="kHx-eW-zK1" customClass="AddTodoViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FeO-BO-Gzj">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="irF-Wy-Jy9">
-                                <rect key="frame" x="16" y="20" width="736" height="409.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyf-9B-aM3">
-                                        <rect key="frame" x="0.0" y="0.0" width="42" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="nSO-jz-57p"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="245" text="Say Sth. " translatesAutoresizingMaskIntoConstraints="NO" id="1zN-6H-7HX">
-                                        <rect key="frame" x="0.0" y="25" width="343" height="384.5"/>
-                                        <color key="backgroundColor" red="0.57229863790000002" green="0.73088995290000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="28"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                </subviews>
-                            </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Event" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Po-p7-Lcf">
+                                <rect key="frame" x="16" y="86" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="kHx-eW-zK1" id="nrO-5T-cKX"/>
+                                </connections>
+                            </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Bmz-tF-cH2">
-                                <rect key="frame" x="16" y="952" width="736" height="72"/>
+                                <rect key="frame" x="16" y="595" width="343" height="72"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QpH-X5-Kmp">
-                                        <rect key="frame" x="0.0" y="0.0" width="736" height="29"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="29"/>
                                         <segments>
                                             <segment title="1"/>
                                             <segment title="2"/>
@@ -170,10 +170,10 @@
                                         <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </segmentedControl>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jdu-Oa-CvY">
-                                        <rect key="frame" x="0.0" y="36" width="736" height="36"/>
+                                        <rect key="frame" x="0.0" y="36" width="343" height="36"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hgd-eu-UwX">
-                                                <rect key="frame" x="0.0" y="0.0" width="70" height="36"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="36"/>
                                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="eBu-AW-D8u"/>
@@ -182,14 +182,21 @@
                                                 <state key="normal" title="Cancel">
                                                     <color key="titleColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="cancelButton:" destination="kHx-eW-zK1" eventType="touchUpInside" id="5xV-U1-32D"/>
+                                                    <segue destination="Nt9-09-no3" kind="show" id="4nB-TN-Bk7"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="245" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6KT-n1-Pch">
-                                                <rect key="frame" x="78" y="0.0" width="658" height="36"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="245" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6KT-n1-Pch">
+                                                <rect key="frame" x="-16" y="0.0" width="0.0" height="36"/>
                                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                                 <state key="normal" title="Done">
                                                     <color key="titleColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="doneButton:" destination="kHx-eW-zK1" eventType="touchUpInside" id="GrX-KA-Tpq"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -199,19 +206,20 @@
                         <color key="backgroundColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="0.82507491438356162" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="goI-bK-JK5" firstAttribute="trailing" secondItem="Bmz-tF-cH2" secondAttribute="trailing" constant="16" id="0Rh-qH-TZF"/>
-                            <constraint firstItem="irF-Wy-Jy9" firstAttribute="height" secondItem="FeO-BO-Gzj" secondAttribute="height" multiplier="0.4" id="8jT-cR-Zen"/>
-                            <constraint firstItem="irF-Wy-Jy9" firstAttribute="leading" secondItem="goI-bK-JK5" secondAttribute="leading" constant="16" id="B5p-w9-tvU"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Bmz-tF-cH2" secondAttribute="bottom" id="Rk6-O7-VoA"/>
-                            <constraint firstItem="irF-Wy-Jy9" firstAttribute="top" secondItem="goI-bK-JK5" secondAttribute="top" id="fTi-7B-HYz"/>
-                            <constraint firstItem="goI-bK-JK5" firstAttribute="trailing" secondItem="irF-Wy-Jy9" secondAttribute="trailing" constant="16" id="gda-yH-RNp"/>
                             <constraint firstItem="Bmz-tF-cH2" firstAttribute="leading" secondItem="goI-bK-JK5" secondAttribute="leading" constant="16" id="soJ-Ej-Y5h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="goI-bK-JK5"/>
                     </view>
+                    <connections>
+                        <outlet property="doneButton" destination="6KT-n1-Pch" id="b5F-lA-i5m"/>
+                        <outlet property="eventNameTF" destination="6Po-p7-Lcf" id="j6W-22-qTd"/>
+                        <outlet property="segmentedCtrl" destination="QpH-X5-Kmp" id="yPi-9h-diD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bNx-M9-Ja1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="649" y="724"/>
+            <point key="canvasLocation" x="648.79999999999995" y="723.68815592203907"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KUv-r8-lSH">
@@ -219,7 +227,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ohb-W0-qrX" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Ezq-EJ-kBz">
-                        <rect key="frame" x="0.0" y="20" width="768" height="96"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
@@ -241,6 +249,9 @@
     </scenes>
     <resources>
         <image name="ChainSign" width="512" height="512"/>
+        <namedColor name="mainDarkGray">
+            <color red="0.16899999976158142" green="0.16899999976158142" blue="0.16899999976158142" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="mainDefaultGreen">
             <color red="0.29800000786781311" green="0.85100001096725464" blue="0.3919999897480011" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
