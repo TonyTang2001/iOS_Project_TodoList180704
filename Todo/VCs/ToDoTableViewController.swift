@@ -30,13 +30,9 @@ class ToDoTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) { (success, error) in
-            if success {
-                print("NotiRequSuccess")
-            } else {
-                print("NotiRequeError")
-            }
-        }
+        let content = UNMutableNotificationContent()
+        content.title = "TiTle"
+        
         // SetUp Status Bar in UITableViewController
 //        self.navigationController?.navigationBar.barStyle = .black
         
@@ -65,6 +61,16 @@ class ToDoTableViewController: UITableViewController {
             
             guard let title = addAlert.textFields?.first?.text else { return }
             
+            // For testing Sort Function
+//            let RFC3339DateFormatter = DateFormatter()
+//            RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
+//            RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+//            RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+//
+//            /* 39 minutes and 57 seconds after the 16th hour of December 19th, 1996 with an offset of -08:00 from UTC (Pacific Standard Time) */
+//            let string = "1996-12-19T16:39:57-08:00"
+//            let date = RFC3339DateFormatter.date(from: string)
+//
             let newTodo = TodoItem(title: title, completed: false, createdAt: Date(), targetTime: Date(), itemIdentifier: UUID())
             
             newTodo.saveItem()
@@ -82,10 +88,6 @@ class ToDoTableViewController: UITableViewController {
         
     }
     
-    func showConnectivityAction() {
-        
-    }
-    
     func completeTodoItem(_ indexPath: IndexPath) {
         var todoItem = todoItems[indexPath.row]
         todoItem.markAsCompleted()
@@ -94,7 +96,8 @@ class ToDoTableViewController: UITableViewController {
         if let cell = tableView.cellForRow(at: indexPath) as? ToDoTableViewCell {
             cell.todoLabel.attributedText = strikeThroughText(todoItem.title)
             UIView.animate(withDuration: 0.1, animations: {
-                cell.transform = cell.transform.scaledBy(x: 1.5, y: 1.5)
+                cell.transform = cell.transform.scaledBy(x: 1.06, y: 1.0)
+                
             }) { (success) in
                 UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
                     cell.transform = CGAffineTransform.identity
@@ -102,10 +105,6 @@ class ToDoTableViewController: UITableViewController {
             }
         }
 
-    }
-    
-    func didRequestShare(_ cell: ToDoTableViewCell) {
-        
     }
     
     func strikeThroughText (_ text : String) -> NSAttributedString {
@@ -172,13 +171,13 @@ class ToDoTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        let fixNotif = UITableViewRowAction(style: .normal, title: "Fix") { (action: UITableViewRowAction, indexPath: IndexPath) in
-            let dotoItem = self.todoItems[indexPath.row]
-            //FIXME: - FixNoti Incompleted
-            
-        }
-        fixNotif.backgroundColor = UIColor.blue
+//        let fixNotif = UITableViewRowAction(style: .normal, title: "Fix") { (action: UITableViewRowAction, indexPath: IndexPath) in
+//            let dotoItem = self.todoItems[indexPath.row]
+//            //FIXME: - FixNoti Incompleted
         
+//        }
+//        fixNotif.backgroundColor = UIColor.blue
+    
         let deleteAction = UITableViewRowAction(style: .normal, title: "Delete") { (action: UITableViewRowAction, indexPath: IndexPath) in
             self.todoItems[indexPath.row].deleteItem()
             self.todoItems.remove(at: indexPath.row)
@@ -187,7 +186,7 @@ class ToDoTableViewController: UITableViewController {
         
         deleteAction.backgroundColor = UIColor(named: "mainDefaultRed")
         
-        return [deleteAction, fixNotif]
+        return [deleteAction]
     }
     
     

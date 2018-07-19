@@ -57,9 +57,9 @@
 		EA92512B20FDE52F00D3076F /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				EAEBFC3820FDE752007956CB /* AddTodoViewController.swift */,
 				EAEE6EA820F4B03D00C6B3D5 /* ContainerViewController.swift */,
 				EAFDEDF220ECFAAA00F77FCB /* ToDoTableViewController.swift */,
-				EAEBFC3820FDE752007956CB /* AddTodoViewController.swift */,
 				EAFDEDF020ECFA9400F77FCB /* ToDoTableViewCell.swift */,
 			);
 			path = VCs;
