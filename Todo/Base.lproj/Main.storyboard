@@ -205,12 +205,13 @@
                         <color key="backgroundColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="0.82507491438356162" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="goI-bK-JK5" firstAttribute="trailing" secondItem="Bmz-tF-cH2" secondAttribute="trailing" constant="16" id="0Rh-qH-TZF"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="Bmz-tF-cH2" secondAttribute="bottom" id="Rk6-O7-VoA"/>
+                            <constraint firstAttribute="bottom" secondItem="Bmz-tF-cH2" secondAttribute="bottom" id="Rk6-O7-VoA"/>
                             <constraint firstItem="Bmz-tF-cH2" firstAttribute="leading" secondItem="goI-bK-JK5" secondAttribute="leading" constant="16" id="soJ-Ej-Y5h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="goI-bK-JK5"/>
                     </view>
                     <connections>
+                        <outlet property="bottomConstraint" destination="Rk6-O7-VoA" id="EGM-Zo-snT"/>
                         <outlet property="doneButton" destination="6KT-n1-Pch" id="b5F-lA-i5m"/>
                         <outlet property="eventNameTF" destination="6Po-p7-Lcf" id="j6W-22-qTd"/>
                         <outlet property="segmentedCtrl" destination="QpH-X5-Kmp" id="yPi-9h-diD"/>

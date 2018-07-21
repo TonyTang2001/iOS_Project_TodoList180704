@@ -9,22 +9,38 @@
 import UIKit
 
 class AddTodoViewController: UIViewController {
-
+ 
+    //MARK: Outlets
     @IBOutlet weak var eventNameTF: UITextField!
     @IBOutlet weak var segmentedCtrl: UISegmentedControl!
     @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardShow(with:)),
+            name: .UIKeyboardWillShow,
+            object: nil)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    
+    //MARK: Actions
+    
+    @objc func keyboardShow(with notification: Notification) {
+        let key = "UIKeyboardFrameEndUserInfoKey"
+        guard let keyboardFrame = notification.userInfo?[key] as? NSValue else { return }
+        
+        let keyboardHeight = keyboardFrame.cgRectValue.height + 16
+        bottomConstraint.constant = keyboardHeight
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     @IBAction func cancelButton(_ sender: UIButton) {
+        dismiss(animated: true)
     }
     
     @IBAction func doneButton(_ sender: UIButton) {
