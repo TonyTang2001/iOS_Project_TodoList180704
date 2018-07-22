@@ -146,16 +146,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Event Name" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="6Po-p7-Lcf">
-                                <rect key="frame" x="16" y="86" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="kHx-eW-zK1" id="nrO-5T-cKX"/>
-                                </connections>
-                            </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Bmz-tF-cH2">
                                 <rect key="frame" x="16" y="595" width="343" height="72"/>
                                 <subviews>
@@ -201,6 +191,14 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="hehehe" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nrU-qI-kKE">
+                                <rect key="frame" x="53" y="35" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" name="mainDefaultLightGray"/>
+                                <color key="textColor" name="mainDefaultLightGray"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="0.82507491438356162" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -213,7 +211,7 @@
                     <connections>
                         <outlet property="bottomConstraint" destination="Rk6-O7-VoA" id="EGM-Zo-snT"/>
                         <outlet property="doneButton" destination="6KT-n1-Pch" id="b5F-lA-i5m"/>
-                        <outlet property="eventNameTF" destination="6Po-p7-Lcf" id="j6W-22-qTd"/>
+                        <outlet property="eventNameTF" destination="nrU-qI-kKE" id="uMU-di-ubn"/>
                         <outlet property="segmentedCtrl" destination="QpH-X5-Kmp" id="yPi-9h-diD"/>
                     </connections>
                 </viewController>
@@ -254,6 +252,9 @@
         </namedColor>
         <namedColor name="mainDefaultGreen">
             <color red="0.29800000786781311" green="0.85100001096725464" blue="0.3919999897480011" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="mainDefaultLightGray">
+            <color red="0.9570000171661377" green="0.9570000171661377" blue="0.9570000171661377" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="mainDefaultOceanBlue">
             <color red="0.14900000393390656" green="0.42100000381469727" blue="0.63700002431869507" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

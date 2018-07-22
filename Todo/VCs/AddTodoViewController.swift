@@ -11,7 +11,7 @@ import UIKit
 class AddTodoViewController: UIViewController {
  
     //MARK: Outlets
-    @IBOutlet weak var eventNameTF: UITextField!
+    @IBOutlet weak var eventNameTF: UITextView!
     @IBOutlet weak var segmentedCtrl: UISegmentedControl!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
@@ -24,6 +24,7 @@ class AddTodoViewController: UIViewController {
             selector: #selector(keyboardShow(with:)),
             name: .UIKeyboardWillShow,
             object: nil)
+        eventNameTF.becomeFirstResponder()
     }
     
     //MARK: Actions
@@ -41,6 +42,7 @@ class AddTodoViewController: UIViewController {
     
     @IBAction func cancelButton(_ sender: UIButton) {
         dismiss(animated: true)
+        eventNameTF.resignFirstResponder()
     }
     
     @IBAction func doneButton(_ sender: UIButton) {
@@ -56,3 +58,22 @@ class AddTodoViewController: UIViewController {
     }
     */
 }
+
+extension AddTodoViewController: UITextViewDelegate {
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        
+        if doneButton.isHidden {
+            
+            eventNameTF.text.removeAll()
+            eventNameTF.textColor = .white
+            
+            doneButton.isHidden = false
+            
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+}
+
+
