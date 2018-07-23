@@ -46,6 +46,7 @@ class AddTodoViewController: UIViewController {
     }
     
     @IBAction func doneButton(_ sender: UIButton) {
+        dismiss(animated: true)
     }
     
     /*
@@ -59,21 +60,21 @@ class AddTodoViewController: UIViewController {
     */
 }
 
+
 extension AddTodoViewController: UITextViewDelegate {
     func textViewDidChangeSelection(_ textView: UITextView) {
         
         if doneButton.isHidden {
             
-            eventNameTF.text.removeAll()
-            eventNameTF.textColor = .white
+            textView.text.removeAll()
+            textView.textColor = .white
             
             doneButton.isHidden = false
             
-            UIView.animate(withDuration: 0.3) {
+            UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
-            }
+            })
+            
         }
     }
 }
-
-

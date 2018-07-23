@@ -155,11 +155,11 @@ class ToDoTableViewController: UITableViewController {
         
         //FIXME: - Prevent Complete Option to show up on Completed Event
         
-        let completeTask = UIContextualAction(style: .normal, title: "✓ Complete") { (action, view, nil) in
+        let completeTask = UIContextualAction(style: .normal, title: "✓") { (action, view, nil) in
             self.completeTodoItem(indexPath)
         }
+//        completeTask.image = ✓
         completeTask.backgroundColor = UIColor(named: "mainDefaultGreen")
-//        completeTask.image = UIImage( ✓ )
         
         //prevent Full Swipe
         let config = UISwipeActionsConfiguration(actions: [completeTask])
@@ -182,7 +182,9 @@ class ToDoTableViewController: UITableViewController {
             self.todoItems[indexPath.row].deleteItem()
             self.todoItems.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            
         }
+        
         
         deleteAction.backgroundColor = UIColor(named: "mainDefaultRed")
         
