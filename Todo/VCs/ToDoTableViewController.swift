@@ -71,14 +71,25 @@ class ToDoTableViewController: UITableViewController {
 //            let string = "1996-12-19T16:39:57-08:00"
 //            let date = RFC3339DateFormatter.date(from: string)
 //
-            let newTodo = TodoItem(title: title, completed: false, createdAt: Date(), targetTime: Date(), itemIdentifier: UUID())
             
-            newTodo.saveItem()
-            self.todoItems.append(newTodo)
-            
-            let indexPath = IndexPath(row: self.tableView.numberOfRows(inSection: 0), section: 0)
-            
-            self.tableView.insertRows(at: [indexPath], with: .automatic)
+            //FIXME: How to Prevent Space Input
+            if title != "" {
+                let newTodo = TodoItem(title: title, completed: false, createdAt: Date(), targetTime: Date(), itemIdentifier: UUID())
+                
+                newTodo.saveItem()
+                self.todoItems.append(newTodo)
+                
+                let indexPath = IndexPath(row: self.tableView.numberOfRows(inSection: 0), section: 0)
+                
+                self.tableView.insertRows(at: [indexPath], with: .automatic)
+            } else {
+                
+                let addAlert = UIAlertController(title: "Cannot Control New Event", message: "Title of the Event Should Not Be Empty", preferredStyle: .alert)
+                
+                addAlert.addAction(UIKit.UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                
+                self.present(addAlert, animated: true, completion: nil)
+            }
             
         }))
         
@@ -173,7 +184,6 @@ class ToDoTableViewController: UITableViewController {
         
 //        let fixNotif = UITableViewRowAction(style: .normal, title: "Fix") { (action: UITableViewRowAction, indexPath: IndexPath) in
 //            let dotoItem = self.todoItems[indexPath.row]
-//            //FIXME: - FixNoti Incompleted
         
 //        }
 //        fixNotif.backgroundColor = UIColor.blue
