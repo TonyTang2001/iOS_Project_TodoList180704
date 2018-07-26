@@ -104,13 +104,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Todo/VCs/ToDoTableViewController.swift"
-            timestampString = "554215825.68172"
+            timestampString = "554280548.902858"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "completeTodoItem(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -61,7 +61,7 @@ class ToDoTableViewController: UITableViewController {
             
             guard let title = addAlert.textFields?.first?.text else { return }
             
-            // For testing Sort Function
+////             For testing Sort Function
 //            let RFC3339DateFormatter = DateFormatter()
 //            RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
 //            RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
@@ -70,18 +70,22 @@ class ToDoTableViewController: UITableViewController {
 //            /* 39 minutes and 57 seconds after the 16th hour of December 19th, 1996 with an offset of -08:00 from UTC (Pacific Standard Time) */
 //            let string = "1996-12-19T16:39:57-08:00"
 //            let date = RFC3339DateFormatter.date(from: string)
-//
-            
-            //FIXME: How to Prevent Space Input
-            if title != "" {
+
+            //Prevent Space/Nil Input as title
+            let trimmedInputTest = title.trimmingCharacters(in: .whitespacesAndNewlines)
+            if trimmedInputTest != "" {
                 let newTodo = TodoItem(title: title, completed: false, createdAt: Date(), targetTime: Date(), itemIdentifier: UUID())
                 
                 newTodo.saveItem()
                 self.todoItems.append(newTodo)
                 
-                let indexPath = IndexPath(row: self.tableView.numberOfRows(inSection: 0), section: 0)
+                //Reload Data (Sorted by TargetTime)
+                self.loadData()
                 
-                self.tableView.insertRows(at: [indexPath], with: .automatic)
+                //Load Newly Created Data Directly at Bottom of List
+//                let indexPath = IndexPath(row: self.tableView.numberOfRows(inSection: 0), section: 0)
+//                self.tableView.insertRows(at: [indexPath], with: .automatic)
+                
             } else {
                 
                 let addAlert = UIAlertController(title: "Cannot Control New Event", message: "Title of the Event Should Not Be Empty", preferredStyle: .alert)
