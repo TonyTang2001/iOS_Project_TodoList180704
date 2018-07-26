@@ -72,8 +72,8 @@ class ToDoTableViewController: UITableViewController {
 //            let date = RFC3339DateFormatter.date(from: string)
 
             //Prevent Space/Nil Input as title
-            let trimmedInputTest = title.trimmingCharacters(in: .whitespacesAndNewlines)
-            if trimmedInputTest != "" {
+            let trimmedInput = title.trimmingCharacters(in: .whitespacesAndNewlines)
+            if trimmedInput != "" {
                 let newTodo = TodoItem(title: title, completed: false, createdAt: Date(), targetTime: Date(), itemIdentifier: UUID())
                 
                 newTodo.saveItem()
@@ -120,11 +120,15 @@ class ToDoTableViewController: UITableViewController {
             }
         }
 
+        //Haptic Feedback
+        let impact = UIImpactFeedbackGenerator()
+        impact.impactOccurred()
+
     }
     
     func strikeThroughText (_ text : String) -> NSAttributedString {
         let attributeString: NSMutableAttributedString = NSMutableAttributedString(string: text)
-        attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))
+        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))
         
         return attributeString
     }

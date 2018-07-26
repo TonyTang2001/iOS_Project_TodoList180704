@@ -26,7 +26,7 @@ class ContainerViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TodoVC" {
-            todoTableViewController = (segue.destination as! UINavigationController).childViewControllers.first as? ToDoTableViewController
+            todoTableViewController = (segue.destination as! UINavigationController).children.first as? ToDoTableViewController
             
         }
     }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nt9-09-no3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nt9-09-no3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,7 +16,7 @@
             <objects>
                 <tableViewController id="stP-nh-oLI" customClass="ToDoTableViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4oU-uU-Shz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <progressView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="hbS-Pu-oJ1">
@@ -43,7 +43,7 @@
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ToDo Item " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aH1-xN-OjB">
                                             <rect key="frame" x="117" y="9" width="228" height="32"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -82,6 +82,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oia-f8-PKK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <segue destination="Ohb-W0-qrX" kind="embed" identifier="TodoVC" id="jDF-F0-bZc"/>
+                                </connections>
+                            </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJm-KM-Xkh">
                                 <rect key="frame" x="330" y="622" width="40" height="40"/>
                                 <color key="backgroundColor" name="mainDefaultOceanBlue"/>
@@ -99,12 +105,6 @@
                                     <action selector="addNewTodoItem:" destination="Nt9-09-no3" eventType="touchUpInside" id="0vL-ge-ilB"/>
                                 </connections>
                             </button>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oia-f8-PKK">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
-                                <connections>
-                                    <segue destination="Ohb-W0-qrX" kind="embed" identifier="TodoVC" id="jDF-F0-bZc"/>
-                                </connections>
-                            </containerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2W-RQ-M95">
                                 <rect key="frame" x="280" y="622" width="42" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -124,8 +124,8 @@
                             <constraint firstItem="IhN-On-0FE" firstAttribute="trailing" secondItem="JJm-KM-Xkh" secondAttribute="trailing" constant="5" id="9kW-5g-d0A"/>
                             <constraint firstItem="Oia-f8-PKK" firstAttribute="leading" secondItem="IhN-On-0FE" secondAttribute="leading" id="Ffe-HL-CN0"/>
                             <constraint firstItem="IhN-On-0FE" firstAttribute="bottom" secondItem="JJm-KM-Xkh" secondAttribute="bottom" constant="5" id="N9p-ca-YWw"/>
+                            <constraint firstItem="Oia-f8-PKK" firstAttribute="bottom" secondItem="Frf-C6-B3K" secondAttribute="bottom" id="QyT-r4-21W"/>
                             <constraint firstItem="IhN-On-0FE" firstAttribute="trailing" secondItem="Oia-f8-PKK" secondAttribute="trailing" id="RYu-cN-iEM"/>
-                            <constraint firstItem="JJm-KM-Xkh" firstAttribute="top" secondItem="Oia-f8-PKK" secondAttribute="bottom" constant="5" id="UXY-np-Y4x"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IhN-On-0FE"/>
                     </view>
@@ -184,7 +184,7 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="245" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6KT-n1-Pch">
-                                                <rect key="frame" x="-16" y="0.0" width="0.0" height="36"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="36"/>
                                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                                 <state key="normal" title="Done">
@@ -245,7 +245,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ChainSign" width="512" height="512"/>
+        <image name="ChainSign" width="1024" height="1024"/>
         <namedColor name="mainDarkGray">
             <color red="0.16899999976158142" green="0.16899999976158142" blue="0.16899999976158142" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

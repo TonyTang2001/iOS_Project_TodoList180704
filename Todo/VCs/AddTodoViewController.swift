@@ -22,7 +22,7 @@ class AddTodoViewController: UIViewController {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(keyboardShow(with:)),
-            name: .UIKeyboardWillShow,
+            name: UIResponder.keyboardWillShowNotification,
             object: nil)
         eventNameTF.becomeFirstResponder()
     }
