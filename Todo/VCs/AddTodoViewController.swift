@@ -28,7 +28,6 @@ class AddTodoViewController: UIViewController {
     }
     
     //MARK: Actions
-    
     @objc func keyboardShow(with notification: Notification) {
         let key = "UIKeyboardFrameEndUserInfoKey"
         guard let keyboardFrame = notification.userInfo?[key] as? NSValue else { return }
