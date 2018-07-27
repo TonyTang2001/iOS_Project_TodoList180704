@@ -2,78 +2,38 @@
 //  AddTodoViewController.swift
 //  Todo
 //
-//  Created by 唐子轩 on 2018/7/17.
+//  Created by 唐子轩 on 2018/7/27.
 //  Copyright © 2018 TonyTang. All rights reserved.
 //
 
 import UIKit
 
 class AddTodoViewController: UIViewController {
- 
-    //MARK: Outlets
-    @IBOutlet weak var eventNameTF: UITextView!
-    @IBOutlet weak var segmentedCtrl: UISegmentedControl!
-    @IBOutlet weak var doneButton: UIButton!
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+
+    let eventNameTF: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Name of Event"
+        textField.backgroundColor = .gray
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardShow(with:)),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil)
-        eventNameTF.becomeFirstResponder()
-    }
-    
-    //MARK: Actions
-    @objc func keyboardShow(with notification: Notification) {
-        let key = "UIKeyboardFrameEndUserInfoKey"
-        guard let keyboardFrame = notification.userInfo?[key] as? NSValue else { return }
+        view.addSubview(eventNameTF)
         
-        let keyboardHeight = keyboardFrame.cgRectValue.height + 16
-        bottomConstraint.constant = keyboardHeight
-        UIView.animate(withDuration: 0.3) {
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    @IBAction func cancelButton(_ sender: UIButton) {
-        dismiss(animated: true)
-        eventNameTF.resignFirstResponder()
-    }
-    
-    @IBAction func doneButton(_ sender: UIButton) {
-        dismiss(animated: true)
-    }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-}
-
-
-extension AddTodoViewController: UITextViewDelegate {
-    func textViewDidChangeSelection(_ textView: UITextView) {
         
-        if doneButton.isHidden {
-            
-            textView.text.removeAll()
-            textView.textColor = .white
-            
-            doneButton.isHidden = false
-            
-            UIView.animate(withDuration: 0.3, animations: {
-                self.view.layoutIfNeeded()
-            })
-            
-        }
+//        eventNameTFSetup()
+        
     }
+    
+    func eventNameTFSetup() {
+        eventNameTF.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        eventNameTF.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        eventNameTF.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -48).isActive = true
+        eventNameTF.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+
+
 }
