@@ -72,7 +72,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Al-MO-Dkm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="828" y="52.623688155922046"/>
+            <point key="canvasLocation" x="1271" y="52"/>
         </scene>
         <!--Container View Controller-->
         <scene sceneID="pQg-N4-9PL">
@@ -114,7 +114,7 @@
                                     <color key="titleShadowColor" name="mainDarkGray"/>
                                 </state>
                                 <connections>
-                                    <segue destination="vSL-jK-tdg" kind="presentation" id="mD2-sd-CTz"/>
+                                    <segue destination="vSL-jK-tdg" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="mD2-sd-CTz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -136,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PbH-IE-WSV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-535" y="52"/>
+            <point key="canvasLocation" x="-524" y="-21"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KUv-r8-lSH">
@@ -161,22 +161,22 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e77-hT-OXw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="146" y="52"/>
+            <point key="canvasLocation" x="588" y="51"/>
         </scene>
         <!--Add Todo View Controller-->
         <scene sceneID="BN6-Jo-rUr">
             <objects>
-                <viewController id="vSL-jK-tdg" customClass="AddTodoViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="vSL-jK-tdg" customClass="AddTodoViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8S4-zv-fmu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="0.20020869006849315" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="rrZ-TY-3ZZ"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ufZ-YY-kkk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="145" y="-679"/>
+            <point key="canvasLocation" x="588" y="-666"/>
         </scene>
     </scenes>
     <resources>
