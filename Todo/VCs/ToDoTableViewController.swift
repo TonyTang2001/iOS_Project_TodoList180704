@@ -27,8 +27,19 @@ class ToDoTableViewController: UITableViewController {
         }
     }
     
+    func NaviItemTitleSetup() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM dd"
+        let timeString = dateFormatter.string(from: Date())
+        
+        self.navigationItem.title = timeString
+    }
+    
+    //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NaviItemTitleSetup()
         
         let content = UNMutableNotificationContent()
         content.title = "TiTle"
@@ -55,6 +66,7 @@ class ToDoTableViewController: UITableViewController {
         
         addAlert.addTextField { (textfield : UITextField) in
             textfield.placeholder = "ToDo Item Title"
+            
         }
         
         addAlert.addAction(UIAlertAction(title: "Create", style: .default, handler: { (UIAlertAction) in
@@ -88,7 +100,7 @@ class ToDoTableViewController: UITableViewController {
                 
             } else {
                 
-                let addAlert = UIAlertController(title: "Cannot Control New Event", message: "Title of the Event Should Not Be Empty", preferredStyle: .alert)
+                let addAlert = UIAlertController(title: "Cannot Create New Event", message: "Title of the Event Should Not Be Empty", preferredStyle: .alert)
                 
                 addAlert.addAction(UIKit.UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
                 
@@ -166,98 +178,39 @@ class ToDoTableViewController: UITableViewController {
         if todoItem.completed {
             cell.todoLabel.attributedText = strikeThroughText(todoItem.title)
         }
-
+        
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
-        //FIXME: - Prevent Complete Option to show up on Completed Event
-        
-        let completeTask = UIContextualAction(style: .normal, title: "✓") { (action, view, nil) in
-            self.completeTodoItem(indexPath)
-        }
-//        completeTask.image = ✓
-        completeTask.backgroundColor = UIColor(named: "mainDefaultGreen")
-        
-        //prevent Full Swipe
-        let config = UISwipeActionsConfiguration(actions: [completeTask])
-        config.performsFirstActionWithFullSwipe = false
-        return config
-        
-//        return UISwipeActionsConfiguration(actions: [completeTask])
-    }
+    //MARK: - Swipe Actions on Cell
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
-//        let fixNotif = UITableViewRowAction(style: .normal, title: "Fix") { (action: UITableViewRowAction, indexPath: IndexPath) in
-//            let dotoItem = self.todoItems[indexPath.row]
-        
-//        }
-//        fixNotif.backgroundColor = UIColor.blue
     
         let deleteAction = UITableViewRowAction(style: .normal, title: "Delete") { (action: UITableViewRowAction, indexPath: IndexPath) in
             self.todoItems[indexPath.row].deleteItem()
             self.todoItems.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            
         }
         
-        
         deleteAction.backgroundColor = UIColor(named: "mainDefaultRed")
-        
         return [deleteAction]
     }
     
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        //FIXME: Prevent Complete Option to show up on Completed Event
+        
+        let complete = completeAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [complete])
+    }
     
-//    //tap To Complete
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        completeTodoItem(indexPath)
-//    }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    func completeAction(at indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .normal, title: "✓") { (action, view, completion) in
+            self.completeTodoItem(indexPath)
+            completion(true)
+        }
+        
+        action.backgroundColor = UIColor(named: "mainDefaultGreen")
+        return action
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

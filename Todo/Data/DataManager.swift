@@ -57,7 +57,6 @@ public class DataManager {
             } catch {
                 fatalError(error.localizedDescription)
             }
-            
         } else {
             fatalError("Data Unavailable at path \(url.path)")
         }
