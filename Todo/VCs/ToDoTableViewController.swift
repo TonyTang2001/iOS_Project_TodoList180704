@@ -31,8 +31,20 @@ class ToDoTableViewController: UITableViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM dd"
         let timeString = dateFormatter.string(from: Date())
-        
         self.navigationItem.title = timeString
+    }
+    
+    func createNotif() {
+        
+        let content = UNMutableNotificationContent()
+        content.title = "TiTle"
+        content.body = "Body"
+        content.sound = UNNotificationSound.default
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let request = UNNotificationRequest(identifier: "test", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        
     }
     
     //MARK: - viewDidLoad
@@ -41,8 +53,9 @@ class ToDoTableViewController: UITableViewController {
         
         NaviItemTitleSetup()
         
-        let content = UNMutableNotificationContent()
-        content.title = "TiTle"
+        
+        
+        
         
         // SetUp Status Bar in UITableViewController
 //        self.navigationController?.navigationBar.barStyle = .black
@@ -66,23 +79,9 @@ class ToDoTableViewController: UITableViewController {
         
         addAlert.addTextField { (textfield : UITextField) in
             textfield.placeholder = "ToDo Item Title"
-            
         }
-        
         addAlert.addAction(UIAlertAction(title: "Create", style: .default, handler: { (UIAlertAction) in
-            
             guard let title = addAlert.textFields?.first?.text else { return }
-            
-////             For testing Sort Function
-//            let RFC3339DateFormatter = DateFormatter()
-//            RFC3339DateFormatter.locale = Locale(identifier: "en_US_POSIX")
-//            RFC3339DateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-//            RFC3339DateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-//
-//            /* 39 minutes and 57 seconds after the 16th hour of December 19th, 1996 with an offset of -08:00 from UTC (Pacific Standard Time) */
-//            let string = "1996-12-19T16:39:57-08:00"
-//            let date = RFC3339DateFormatter.date(from: string)
-
             //Prevent Space/Nil Input as title
             let trimmedInput = title.trimmingCharacters(in: .whitespacesAndNewlines)
             if trimmedInput != "" {
@@ -91,28 +90,26 @@ class ToDoTableViewController: UITableViewController {
                 newTodo.saveItem()
                 self.todoItems.append(newTodo)
                 
+                //request Notification after Successfully Created Event
+                //Notify User ONLY IF Out of App
+                self.createNotif()
+                
                 //Reload Data (Sorted by TargetTime)
                 self.loadData()
-                
                 //Load Newly Created Data Directly at Bottom of List
 //                let indexPath = IndexPath(row: self.tableView.numberOfRows(inSection: 0), section: 0)
 //                self.tableView.insertRows(at: [indexPath], with: .automatic)
-                
             } else {
-                
                 let addAlert = UIAlertController(title: "Cannot Create New Event", message: "Title of the Event Should Not Be Empty", preferredStyle: .alert)
-                
                 addAlert.addAction(UIKit.UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                
                 self.present(addAlert, animated: true, completion: nil)
             }
-            
         }))
-        
         addAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
         self.present(addAlert, animated: true, completion: nil)
         
+        
+
     }
     
     func completeTodoItem(_ indexPath: IndexPath) {
