@@ -29,6 +29,9 @@ struct TodoItem : Codable {
         DataManager.save(self, with: itemIdentifier.uuidString)
     }
     
-    
+    mutating func markAsUnCompleted() {
+        self.completed = false
+        DataManager.save(self, with: itemIdentifier.uuidString)
+    }
     
 }

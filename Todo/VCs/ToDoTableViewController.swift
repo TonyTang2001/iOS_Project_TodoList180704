@@ -34,14 +34,14 @@ class ToDoTableViewController: UITableViewController {
         self.navigationItem.title = timeString
     }
     
-    func createNotif() {
-        
+    //MARK: - Create Notif Func
+    func createNotif(with notifTitle: String, and notifBody: String) {
         let content = UNMutableNotificationContent()
-        content.title = "TiTle"
-        content.body = "Body"
+        content.title = notifTitle
+        content.body = notifBody
         content.sound = UNNotificationSound.default
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        let request = UNNotificationRequest(identifier: "test", content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         
@@ -52,10 +52,6 @@ class ToDoTableViewController: UITableViewController {
         super.viewDidLoad()
         
         NaviItemTitleSetup()
-        
-        
-        
-        
         
         // SetUp Status Bar in UITableViewController
 //        self.navigationController?.navigationBar.barStyle = .black
@@ -73,6 +69,8 @@ class ToDoTableViewController: UITableViewController {
         progressBar.setProgress(progress, animated: true)
     }
     
+    //MARK: - Todo Manipulation
+    //MARK: Add Todo
     func addNewTodo() {
         
         let addAlert = UIAlertController(title: "New Todo", message: "Enter a Title", preferredStyle: .alert)
@@ -90,15 +88,18 @@ class ToDoTableViewController: UITableViewController {
                 newTodo.saveItem()
                 self.todoItems.append(newTodo)
                 
+                //MARK: Create Notif
                 //request Notification after Successfully Created Event
                 //Notify User ONLY IF Out of App
-                self.createNotif()
+                self.createNotif(with: title, and: title)
                 
                 //Reload Data (Sorted by TargetTime)
                 self.loadData()
+                
                 //Load Newly Created Data Directly at Bottom of List
 //                let indexPath = IndexPath(row: self.tableView.numberOfRows(inSection: 0), section: 0)
 //                self.tableView.insertRows(at: [indexPath], with: .automatic)
+                
             } else {
                 let addAlert = UIAlertController(title: "Cannot Create New Event", message: "Title of the Event Should Not Be Empty", preferredStyle: .alert)
                 addAlert.addAction(UIKit.UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -112,44 +113,8 @@ class ToDoTableViewController: UITableViewController {
 
     }
     
-    func completeTodoItem(_ indexPath: IndexPath) {
-        var todoItem = todoItems[indexPath.row]
-        todoItem.markAsCompleted()
-        todoItems[indexPath.row] = todoItem
-
-        if let cell = tableView.cellForRow(at: indexPath) as? ToDoTableViewCell {
-            cell.todoLabel.attributedText = strikeThroughText(todoItem.title)
-            UIView.animate(withDuration: 0.1, animations: {
-                cell.transform = cell.transform.scaledBy(x: 1.06, y: 1.0)
-                
-            }) { (success) in
-                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-                    cell.transform = CGAffineTransform.identity
-                }, completion: nil)
-            }
-        }
-
-        //Haptic Feedback
-        let impact = UIImpactFeedbackGenerator()
-        impact.impactOccurred()
-
-    }
-    
-    func strikeThroughText (_ text : String) -> NSAttributedString {
-        let attributeString: NSMutableAttributedString = NSMutableAttributedString(string: text)
-        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))
-        
-        return attributeString
-    }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -195,9 +160,14 @@ class ToDoTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         //FIXME: Prevent Complete Option to show up on Completed Event
+        if !(todoItems?[indexPath.row].completed)!{
+            let complete = completeAction(at: indexPath)
+            return UISwipeActionsConfiguration(actions: [complete])
+        } else {
+            let uncomplete = uncompleteAction(at: indexPath)
+            return UISwipeActionsConfiguration(actions: [uncomplete])
+        }
         
-        let complete = completeAction(at: indexPath)
-        return UISwipeActionsConfiguration(actions: [complete])
     }
     
     func completeAction(at indexPath: IndexPath) -> UIContextualAction {
@@ -205,9 +175,73 @@ class ToDoTableViewController: UITableViewController {
             self.completeTodoItem(indexPath)
             completion(true)
         }
-        
         action.backgroundColor = UIColor(named: "mainDefaultGreen")
         return action
     }
+    
+    func uncompleteAction(at indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .normal, title: "✓") { (action, view, completion) in
+            self.uncompleteTodoItem(indexPath)
+            completion(true)
+        }
+        action.backgroundColor = UIColor.black
+        return action
+    }
 
+    //MARK: - Complete/UnComplete Todo
+    //Complete
+    func completeTodoItem(_ indexPath: IndexPath) {
+        var todoItem = todoItems[indexPath.row]
+        todoItem.markAsCompleted()
+        todoItems[indexPath.row] = todoItem
+        
+        if let cell = tableView.cellForRow(at: indexPath) as? ToDoTableViewCell {
+            cell.todoLabel.attributedText = strikeThroughText(todoItem.title)
+            UIView.animate(withDuration: 0.1, animations: {
+                cell.transform = cell.transform.scaledBy(x: 1.06, y: 1.0)
+                
+            }) { (success) in
+                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+                    cell.transform = CGAffineTransform.identity
+                }, completion: nil)
+            }
+        }
+        
+        //Haptic Feedback
+        let impact = UIImpactFeedbackGenerator()
+        impact.impactOccurred()
+        
+    }
+    
+    //Uncomplete
+    func uncompleteTodoItem(_ indexPath: IndexPath) {
+        var todoItem = todoItems[indexPath.row]
+        todoItem.markAsUnCompleted()
+        todoItems[indexPath.row] = todoItem
+        
+//        if let cell = tableView.cellForRow(at: indexPath) as? ToDoTableViewCell {
+//            cell.todoLabel.attributedText = strikeThroughText(todoItem.title)
+//            UIView.animate(withDuration: 0.1, animations: {
+//                cell.transform = cell.transform.scaledBy(x: 1.06, y: 1.0)
+//
+//            }) { (success) in
+//                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+//                    cell.transform = CGAffineTransform.identity
+//                }, completion: nil)
+//            }
+//        }
+        
+        //Haptic Feedback
+        let impact = UIImpactFeedbackGenerator()
+        impact.impactOccurred()
+        
+    }
+    
+    //Complete Effect
+    func strikeThroughText (_ text : String) -> NSAttributedString {
+        let attributeString: NSMutableAttributedString = NSMutableAttributedString(string: text)
+        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))
+        
+        return attributeString
+    }
 }
