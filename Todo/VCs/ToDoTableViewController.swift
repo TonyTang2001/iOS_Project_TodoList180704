@@ -40,11 +40,17 @@ class ToDoTableViewController: UITableViewController {
         content.title = notifTitle
         content.body = notifBody
         content.sound = UNNotificationSound.default
+        content.threadIdentifier = notifTitle
+        if #available(iOS 12.0, *) {
+            content.summaryArgument = notifTitle
+        } else {
+            // Fallback on earlier versions
+        }
+            
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        
     }
     
     //MARK: - viewDidLoad
@@ -159,7 +165,7 @@ class ToDoTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        //FIXME: Prevent Complete Option to show up on Completed Event
+        
         if !(todoItems?[indexPath.row].completed)!{
             let complete = completeAction(at: indexPath)
             return UISwipeActionsConfiguration(actions: [complete])
