@@ -40,5 +40,9 @@ class ContainerViewController: UIViewController {
         return .lightContent
     }
     
+    func reloadData() {
+        todoTableViewController.loadData()
+    }
+    
 
 }

@@ -66,6 +66,7 @@ class ToDoTableViewController: UITableViewController {
         
     }
 
+    
     func loadData() {
         todoItems = [TodoItem]()
         todoItems = DataManager.loadAll(TodoItem.self).sorted(by: {
