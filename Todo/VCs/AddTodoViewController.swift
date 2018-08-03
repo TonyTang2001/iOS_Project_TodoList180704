@@ -43,7 +43,11 @@ class AddTodoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //Dismiss Keyboard after Tapping Elsewhere
+        let tapper = UITapGestureRecognizer(target: self, action:#selector(dismissKeyboard))
+        tapper.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapper)
 //        view.addSubview(eventNameTF)
 //        view.addSubview(cancelButton)
 //
@@ -51,6 +55,9 @@ class AddTodoViewController: UIViewController {
 //        cancelButtonSetup()
     }
     
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        titleInputTF.resignFirstResponder()
+    }
 //    func eventNameTFSetup() {
 //        eventNameTF.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 //        eventNameTF.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -78,7 +85,8 @@ class AddTodoViewController: UIViewController {
 //        self.todoTableViewController.loadData()
     }
     
-    //MARK: Add Todo
+    //MARK: - Add Todo
+    //FIXME: TableView won't Reload After Creating a New Event
     func addNewTodo() {
         
         guard let title = titleInputTF.text else { return }
