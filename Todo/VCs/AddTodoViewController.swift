@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddTodoViewController: UIViewController {
+class AddTodoViewController: UIViewController, UITextFieldDelegate {
 
     var ContainerViewController : ContainerViewController!
     
@@ -48,6 +48,11 @@ class AddTodoViewController: UIViewController {
         let tapper = UITapGestureRecognizer(target: self, action:#selector(dismissKeyboard))
         tapper.cancelsTouchesInView = false
         view.addGestureRecognizer(tapper)
+        
+        //Set titleInputTF as First Responder
+        titleInputTF.delegate = self
+        titleInputTF.becomeFirstResponder()
+        
 //        view.addSubview(eventNameTF)
 //        view.addSubview(cancelButton)
 //
@@ -96,7 +101,6 @@ class AddTodoViewController: UIViewController {
             let newTodo = TodoItem(title: title, completed: false, createdAt: Date(), targetTime: targetTimePicker.date, itemIdentifier: UUID())
             
             newTodo.saveItem()
-
             
         } else {
             let addAlert = UIAlertController(title: "Cannot Create New Event", message: "Title of the Event Should Not Be Empty", preferredStyle: .alert)
