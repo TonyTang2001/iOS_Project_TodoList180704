@@ -53,9 +53,32 @@ class ToDoTableViewController: UITableViewController {
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
+    //MARK: Setup Pull to Refresh
+    lazy var refresher: UIRefreshControl = {
+        
+        let refreshCtrl = UIRefreshControl()
+        refreshCtrl.tintColor = UIColor(named: "mainDefaultLightGray")
+        refreshCtrl.addTarget(self, action: #selector(loadDataR), for: .valueChanged)
+        
+        return refreshCtrl
+    }()
+    
+    @objc func loadDataR(){
+        loadData()
+        print("Refresh Action to loadData()")
+        
+        let deadline = DispatchTime.now() + .milliseconds(600)
+        DispatchQueue.main.asyncAfter(deadline: deadline) {
+            self.refresher.endRefreshing()
+        }
+    }
+    
+    
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.refreshControl = refresher
         
         NaviItemTitleSetup()
         

@@ -11,6 +11,7 @@ import UIKit
 class AddTodoViewController: UIViewController, UITextFieldDelegate {
 
     var ContainerViewController : ContainerViewController!
+    var ToDoTableViewController : ToDoTableViewController!
     
     @IBOutlet weak var titleInputTF: UITextField!
     @IBOutlet weak var targetTimePicker: UIDatePicker!
@@ -95,12 +96,13 @@ class AddTodoViewController: UIViewController, UITextFieldDelegate {
     func addNewTodo() {
         
         guard let title = titleInputTF.text else { return }
-        //Prevent Space/Nil Input as title
+        
         let trimmedInput = title.trimmingCharacters(in: .whitespacesAndNewlines)
         if trimmedInput != "" {
             let newTodo = TodoItem(title: title, completed: false, createdAt: Date(), targetTime: targetTimePicker.date, itemIdentifier: UUID())
             
             newTodo.saveItem()
+//            ToDoTableViewController.createNotif(with: title, and: title)
             
         } else {
             let addAlert = UIAlertController(title: "Cannot Create New Event", message: "Title of the Event Should Not Be Empty", preferredStyle: .alert)
