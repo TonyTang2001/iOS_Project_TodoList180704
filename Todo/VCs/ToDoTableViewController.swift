@@ -187,7 +187,7 @@ class ToDoTableViewController: UITableViewController {
     }
     
     func uncompleteAction(at indexPath: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .normal, title: "✓") { (action, view, completion) in
+        let action = UIContextualAction(style: .normal, title: "⤫") { (action, view, completion) in
             self.uncompleteTodoItem(indexPath)
             completion(true)
         }
@@ -206,7 +206,6 @@ class ToDoTableViewController: UITableViewController {
             cell.todoLabel.attributedText = strikeThroughText(todoItem.title)
             UIView.animate(withDuration: 0.1, animations: {
                 cell.transform = cell.transform.scaledBy(x: 1.06, y: 1.0)
-                
             }) { (success) in
                 UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
                     cell.transform = CGAffineTransform.identity
@@ -226,17 +225,17 @@ class ToDoTableViewController: UITableViewController {
         todoItem.markAsUnCompleted()
         todoItems[indexPath.row] = todoItem
         
-//        if let cell = tableView.cellForRow(at: indexPath) as? ToDoTableViewCell {
-//            cell.todoLabel.attributedText = strikeThroughText(todoItem.title)
-//            UIView.animate(withDuration: 0.1, animations: {
-//                cell.transform = cell.transform.scaledBy(x: 1.06, y: 1.0)
-//
-//            }) { (success) in
-//                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-//                    cell.transform = CGAffineTransform.identity
-//                }, completion: nil)
-//            }
-//        }
+        if let cell = tableView.cellForRow(at: indexPath) as? ToDoTableViewCell {
+            cell.todoLabel.attributedText = unStrikeThroughText(todoItem.title)
+            UIView.animate(withDuration: 0.1, animations: {
+                cell.transform = cell.transform.scaledBy(x: 1.06, y: 1.0)
+
+            }) { (success) in
+                UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+                    cell.transform = CGAffineTransform.identity
+                }, completion: nil)
+            }
+        }
         
         //Haptic Feedback
         let impact = UIImpactFeedbackGenerator()
@@ -251,4 +250,13 @@ class ToDoTableViewController: UITableViewController {
         
         return attributeString
     }
+    
+    //UnComplete Effect
+    func unStrikeThroughText (_ text : String) -> NSAttributedString {
+        let attributeString: NSMutableAttributedString = NSMutableAttributedString(string: text)
+        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 0, range: NSMakeRange(0, attributeString.length))
+        
+        return attributeString
+    }
+    
 }
